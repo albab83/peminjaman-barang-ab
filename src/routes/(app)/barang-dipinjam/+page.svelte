@@ -9,6 +9,7 @@
   let token;
   let successMessage = '';
   let errorMessage = '';
+  let loadingId = null;
   let loading = true; // state untuk menandakan data sedang dimuat
 
   onMount(() => {
@@ -37,6 +38,7 @@
   };
 
   const kembalikanBarang = async (id) => {
+    loadingId = id;
     try {
       const res = await axios.put(
         `https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`,
@@ -50,6 +52,7 @@
       successMessage = '';
       errorMessage = err.response?.data?.message || 'Gagal mengembalikan barang';
     }
+    loadingId = null;
   };
 </script>
 
@@ -128,11 +131,21 @@
               </td>
               <td class="px-4 py-2 text-sm">
                 <button
-                  on:click={() => kembalikanBarang(item.id)}
-                  class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-green-500"
-                >
+                on:click={() => kembalikanBarang(item.id)}
+                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition flex items-center justify-center disabled:opacity-70"
+                disabled={loadingId === item.id}
+              >
+                {#if loadingId === item.id}
+                  <svg class="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                  </svg>
+                  Loading...
+                {:else}
                   Kembalikan
+                {/if}
                 </button>
+              
               </td>
             </tr>
           {:else}

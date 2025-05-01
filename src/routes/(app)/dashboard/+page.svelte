@@ -61,24 +61,25 @@
     </svg>
   </div>
 {:else}
-  <div class="px-12">
-    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Dashboard Admin</h1>
-      </div>
+<div class="px-4 sm:px-12">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-4 sm:p-8">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-xl sm:text-2xl font-bold">Dashboard Admin</h1>
+    </div>
 
-      <div class="mt-6 grid gap-4 sm:grid-cols-2">
-        <div class="p-4 bg-blue-100 rounded-xl shadow">
-          <h2 class="font-semibold text-lg">Total Barang</h2>
-          <p class="text-blue-800 text-xl mt-2">{totalBarang}</p>
-        </div>
-        <div class="p-4 bg-green-100 rounded-xl shadow">
-          <h2 class="font-semibold text-lg">Dipinjam</h2>
-          <p class="text-green-800 text-xl mt-2">{totalDipinjam}</p>
-        </div>
+    <div class="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2">
+      <div class="p-4 bg-blue-100 rounded-xl shadow">
+        <h2 class="font-semibold text-base sm:text-lg">Total Barang</h2>
+        <p class="text-blue-800 text-lg sm:text-xl mt-2">{totalBarang}</p>
+      </div>
+      <div class="p-4 bg-green-100 rounded-xl shadow">
+        <h2 class="font-semibold text-base sm:text-lg">Dipinjam</h2>
+        <p class="text-green-800 text-lg sm:text-xl mt-2">{totalDipinjam}</p>
       </div>
     </div>
   </div>
+</div>
+
 
   <div class="mt-8 m-10 max-w-4xl mx-auto">
     <h2 class="text-xl font-semibold mb-4 pl-5">10 Barang yang Sedang Dipinjam</h2>

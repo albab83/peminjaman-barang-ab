@@ -75,11 +75,11 @@
       <label for="id_barang" class="block text-sm font-medium text-gray-700 mb-1">Pilih Barang</label>
       <select bind:value={id_barang} class="w-full border rounded px-3 py-2">
         <option value="">-- Pilih Barang --</option>
-        {#each items as barang}
-          <option value={barang.id}>{barang.nama_barang} ({barang.stok})</option>
+        {#each items as item}
+          <option value={item.id}>{item.nama_barang} ({item.stok})</option>
         {/each}
       </select>
-    </div>
+    </div>    
 
     <div>
       <label for="peminjam" class="block text-sm font-medium text-gray-700 mb-1">Nama Peminjam</label>

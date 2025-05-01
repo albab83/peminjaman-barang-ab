@@ -36,8 +36,8 @@
   };
 </script>
 
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
-  <div class="bg-white p-8 rounded-2xl shadow-md w-full max-w-md">
+<div class="flex justify-center items-center min-h-screen">
+  <div class="bg-white p-8 rounded-2xl w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center">Login Admin</h2>
 
     <!-- Notifikasi -->

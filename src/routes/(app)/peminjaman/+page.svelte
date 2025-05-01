@@ -17,7 +17,7 @@
 
   const fetchItems = async () => {
     try {
-      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/items', {
+      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/barang', {
         headers: { Authorization: `Bearer ${token}` }
       });
       items = res.data;

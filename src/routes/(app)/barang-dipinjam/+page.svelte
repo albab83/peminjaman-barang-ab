@@ -100,49 +100,50 @@
 
   <!-- Data Table -->
   {#if !loading}
-    <div class="mt-8 m-10 max-w-4xl mx-auto">
-      <h2 class="text-xl font-semibold mb-4">Barang yang Sedang Dipinjam</h2>
-      <div class="overflow-x-auto">
-        <table class="min-w-full overflow-hidden">
-          <thead class="">
-            <tr>
-              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Peminjam</th>
-              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama Barang</th>
-              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Kategori</th>
-              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Tanggal Pinjam</th>
-              <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Aksi</th>
+  <div class="mt-8 m-10 max-w-4xl mx-auto">
+    <h2 class="text-xl font-semibold mb-4 pl-5">Barang yang Sedang Dipinjam</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Peminjam</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Nama Barang</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Kategori</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Tanggal Pinjam</th>
+            <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each barangDipinjam as item}
+            <tr class="border-t">
+              <td class="px-4 py-2 text-sm text-gray-800">{item.peminjam}</td>
+              <td class="px-4 py-2 text-sm text-gray-800">{item.nama_barang}</td>
+              <td class="px-4 py-2 text-sm text-gray-800">{item.kategori}</td>
+              <td class="px-4 py-2 text-sm text-gray-800">
+                {new Date(item.tanggal_pinjam).toLocaleString('id-ID', {
+                  timeZone: 'Asia/Jakarta',
+                  dateStyle: 'medium',
+                  timeStyle: 'medium'
+                })}
+              </td>
+              <td class="px-4 py-2 text-sm">
+                <button
+                  on:click={() => kembalikanBarang(item.id)}
+                  class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  Kembalikan
+                </button>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {#each barangDipinjam as item}
-              <tr class="">
-                <td class="px-4 py-2 text-sm text-gray-800">{item.peminjam}</td>
-                <td class="px-4 py-2 text-sm text-gray-800">{item.nama_barang}</td>
-                <td class="px-4 py-2 text-sm text-gray-800">{item.kategori}</td>
-                <td class="px-4 py-2 text-sm text-gray-800">
-                  {new Date(item.tanggal_pinjam).toLocaleString('id-ID', {
-                    timeZone: 'Asia/Jakarta',
-                    dateStyle: 'medium',
-                    timeStyle: 'medium'
-                  })}
-                </td>
-                <td class="px-4 py-2 text-sm">
-                  <button
-                    on:click={() => kembalikanBarang(item.id)}
-                    class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition focus:outline-none focus:ring-2 focus:ring-green-500"
-                  >
-                    Kembalikan
-                  </button>
-                </td>
-              </tr>
-            {:else}
-              <tr>
-                <td colspan="5" class="text-center px-4 py-2 text-sm text-gray-500">Tidak ada data</td>
-              </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
+          {:else}
+            <tr>
+              <td colspan="5" class="text-center px-4 py-2 text-sm text-gray-500">Tidak ada data</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
     </div>
+  </div>
+  
   {/if}
 </main>

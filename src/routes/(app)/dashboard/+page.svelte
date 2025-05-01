@@ -62,7 +62,7 @@
   </div>
 {:else}
 <div class="px-1 sm:px-1">
-  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-4 sm:p-1">
+  <div class="max-w-4xl bg-white rounded-2xl shadow-lg p-4 sm:p-1">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-xl sm:text-2xl font-bold">Dashboard Admin</h1>
     </div>

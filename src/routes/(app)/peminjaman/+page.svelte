@@ -20,7 +20,8 @@
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/barang', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      items = res.data;
+
+      items = res.data.data;  
     } catch (err) {
       console.error('Gagal mengambil data:', err);
     }

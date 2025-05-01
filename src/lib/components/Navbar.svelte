@@ -50,7 +50,7 @@
       <a href="/riwayat" class="block hover:underline">Riwayat</a>
       <button
         on:click={handleLogout}
-        class="w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-sm text-left"
+        class="w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-sm text-center"
       >
         Logout
       </button>

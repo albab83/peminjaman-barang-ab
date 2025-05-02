@@ -52,14 +52,14 @@
         }
       );
 
-      successMessage = res.data.message || 'Berhasil meminjam barang';
+      successMessage = res.data.message;
       errorMessage = '';
       id_barang = '';
       peminjam = '';
       await fetchItems();
     } catch (err) {
       successMessage = "";
-      errorMessage = err.response.data.message || '';
+      errorMessage = err.response.data.message;
     } finally {
       loading = false;
     }

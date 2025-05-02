@@ -58,8 +58,8 @@
       peminjam = '';
       await fetchItems();
     } catch (err) {
-      successMessage = '';
-      errorMessage = err.response?.data?.error || 'Terjadi kesalahan saat meminjam';
+      successMessage = "";
+      errorMessage = err.response.data.message || '';
     } finally {
       loading = false;
     }

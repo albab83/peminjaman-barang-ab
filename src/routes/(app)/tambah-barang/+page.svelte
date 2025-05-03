@@ -38,7 +38,6 @@
       const activeItems = response.data.data.filter(item => !item.is_deleted);
 
       riwayat = activeItems;
-      items = res.data.data;
     } catch (err) {
       errorMessage = 'Gagal memuat barang.';
       setTimeout(() => (errorMessage = ''), 3000);

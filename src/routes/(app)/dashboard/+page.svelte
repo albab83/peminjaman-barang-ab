@@ -61,13 +61,13 @@
     </svg>
   </div>
 {:else}
-<div class="px-1 sm:px-1 justify-center">
-  <div class="max-w-4xl bg-white rounded-2xl shadow-lg p-4 sm:p-1">
+<<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 bg-gray-50">
+  <div class="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-xl sm:text-2xl font-bold">Dashboard Admin</h1>
     </div>
 
-    <div class="mt-6 grid gap-4 grid-cols-1 sm:grid-cols-2">
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2">
       <div class="p-4 bg-blue-100 rounded-xl shadow">
         <h2 class="font-semibold text-base sm:text-lg">Total Barang</h2>
         <p class="text-blue-800 text-lg sm:text-xl mt-2">{totalBarang}</p>
@@ -79,6 +79,7 @@
     </div>
   </div>
 </div>
+
 
 
   <div class="mt-8 m-10 max-w-4xl mx-auto">

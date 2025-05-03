@@ -28,7 +28,9 @@
         headers: { Authorization: `Bearer ${token}` }
       });
 
-      items = res.data.data;  
+
+      const activeItems = res.data.data.filter(item => item.status === 'tersedia');
+      items = activeItems;
     } catch (err) {
       console.error('Gagal mengambil data:', err);
     }

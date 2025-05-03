@@ -34,6 +34,10 @@
           headers: { Authorization: `Bearer ${token}` }
         }
       );
+
+      const activeItems = response.data.data.filter(item => !item.is_deleted);
+
+      riwayat = activeItems;
       items = res.data.data;
     } catch (err) {
       errorMessage = 'Gagal memuat barang.';
@@ -99,6 +103,8 @@
           headers: { Authorization: `Bearer ${token}` }
         }
       );
+
+      
       successMessage = 'Barang berhasil dihapus!';
       await fetchItems();
     } catch (err) {

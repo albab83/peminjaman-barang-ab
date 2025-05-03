@@ -15,6 +15,13 @@
     await fetchItems();
   });
 
+  function autoClearMessage() {
+  setTimeout(() => {
+    successMessage = '';
+    errorMessage = '';
+  }, 3000); // 3 detik
+}
+
   const fetchItems = async () => {
     try {
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/barang', {

@@ -39,7 +39,7 @@
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/items/tambah-barang',
+        'https://backend-peminjaman-barang-production.up.railway.app/api/items/tambah-barang',
         { nama_barang, kategori, stok },
         {
           headers: {

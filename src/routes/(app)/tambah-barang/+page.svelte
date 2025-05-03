@@ -29,7 +29,7 @@
     fetching = true;
     try {
       const res = await axios.get(
-        'https://backend-peminjaman-barang-production.up.railway.app/api/items',
+        'https://backend-peminjaman-barang-production.up.railway.app/api/items/barang',
         {
           headers: { Authorization: `Bearer ${token}` }
         }
@@ -91,7 +91,7 @@
 
     try {
       await axios.delete(
-        `https://backend-peminjaman-barang-production.up.railway.app/api/items/${id}`,
+        `https://backend-peminjaman-barang-production.up.railway.app/api/items/barang/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }

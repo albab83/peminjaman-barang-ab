@@ -61,7 +61,7 @@
     </svg>
   </div>
 {:else}
-<<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 bg-gray-50">
+<div class="min-h-screen flex items-center justify-center px-4 sm:px-6 bg-gray-50">
   <div class="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8">
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-xl sm:text-2xl font-bold">Dashboard Admin</h1>

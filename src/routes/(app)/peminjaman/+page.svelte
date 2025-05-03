@@ -38,11 +38,13 @@
     if (!id_barang) {
       errorMessage = 'Pilih barang yang ingin dipinjam';
       successMessage = '';
+      autoClearMessage();
       return;
     }
     if (!peminjam.trim()) {
       errorMessage = 'Nama peminjam harus diisi';
       successMessage = '';
+      autoClearMessage();
       return;
     }
 
@@ -68,8 +70,10 @@
       successMessage = "";
       errorMessage = err.response.data.message;
     } finally {
+      autoClearMessage();
       loading = false;
     }
+
   };
 
 </script>

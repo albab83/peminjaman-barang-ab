@@ -28,9 +28,8 @@
         headers: { Authorization: `Bearer ${token}` }
       });
 
-
-      const activeItems = res.data.data.filter(item => item.status === 'tersedia');
-      items = activeItems;
+    const activeItems = res.data.data.filter(item => !item.is_deleted);
+    items = activeItems;
     } catch (err) {
       console.error('Gagal mengambil data:', err);
     }

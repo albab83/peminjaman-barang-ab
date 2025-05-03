@@ -93,11 +93,6 @@
 
     try {
 
-    const itemId = parseInt(id, 10);
-      if (isNaN(itemId)) {
-        console.error('ID tidak valid');
-        return;
-      }
       await axios.delete(
         `https://backend-peminjaman-barang-production.up.railway.app/api/items/hapus/${itemId}`,
         {

@@ -26,25 +26,25 @@
   });
 
   const fetchItems = async () => {
-    fetching = true;
-    try {
-      const res = await axios.get(
-        'https://backend-peminjaman-barang-production.up.railway.app/api/items/barang',
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
+  fetching = true;
+  try {
+    const res = await axios.get(
+      'https://backend-peminjaman-barang-production.up.railway.app/api/items/barang',
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
 
-      const activeItems = response.data.data.filter(item => !item.is_deleted);
+    const activeItems = res.data.data.filter(item => !item.is_deleted);
+    items = activeItems;
+  } catch (err) {
+    errorMessage = 'Gagal memuat barang.';
+    setTimeout(() => (errorMessage = ''), 3000);
+  } finally {
+    fetching = false;
+  }
+};
 
-      riwayat = activeItems;
-    } catch (err) {
-      errorMessage = 'Gagal memuat barang.';
-      setTimeout(() => (errorMessage = ''), 3000);
-    } finally {
-      fetching = false;
-    }
-  };
 
   const tambahBarang = async () => {
     if (!nama_barang.trim()) {

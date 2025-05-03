@@ -91,7 +91,7 @@
 
     try {
       await axios.delete(
-        `https://backend-peminjaman-barang-production.up.railway.app/api/items/hapus/:${id}`,
+        `https://backend-peminjaman-barang-production.up.railway.app/api/items/hapus/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }

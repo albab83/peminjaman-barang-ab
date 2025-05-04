@@ -138,6 +138,8 @@
   let errorMessage = '';
   let loading = false;
   let listLoading = true;
+  let loadingId = null;
+
 
   onMount(async () => {
     try {
@@ -223,17 +225,22 @@
     }
   };
 
+
   const kembalikanBarang = async (id) => {
-    try {
-      await axios.put(`https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      await fetchItems();
-      await fetchPeminjam();
-    } catch (err) {
-      console.error('Gagal mengembalikan barang:', err);
-    }
-  };
+  loadingId = id;
+  try {
+    await axios.put(`https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    await fetchItems();
+    await fetchPeminjam();
+  } catch (err) {
+    console.error('Gagal mengembalikan barang:', err);
+  } finally {
+    loadingId = null;
+  }
+};
+
 </script>
 
 <div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">

@@ -1,6 +1,15 @@
 <script>
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
+  import { onDestroy } from 'svelte';
+
+  let currentPath = '';
+
+  const unsubscribe = page.subscribe(($page) => {
+    currentPath = $page.url.pathname;
+  });
+
+  onDestroy(unsubscribe);
 
   let menuOpen = false;
 
@@ -27,12 +36,15 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-4">
-      <a href="/dashboard" class="hover:underline" class:font-bold={$page.url.pathname.startsWith('/dashboard')}>Dashboard</a>
-      <a href="/peminjaman" class="hover:underline" class:font-bold={$page.url.pathname.startsWith('/peminjaman')}>Peminjaman</a>
-      <a href="/barang-dipinjam" class="hover:underline" class:font-bold={$page.url.pathname.startsWith('/barang-dipinjam')}>Dipinjam</a>
-      <a href="/tambah-barang" class="hover:underline" class:font-bold={$page.url.pathname.startsWith('/tambah-barang')}>Tambah Barang</a>
-      <a href="/riwayat" class="hover:underline" class:font-bold={$page.url.pathname.startsWith('/riwayat')}>Riwayat</a>
-      <button on:click={handleLogout} class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm">
+      <a href="/dashboard" class="hover:underline" class:font-bold={currentPath.startsWith('/dashboard')}>Dashboard</a>
+      <a href="/peminjaman" class="hover:underline" class:font-bold={currentPath.startsWith('/peminjaman')}>Peminjaman</a>
+      <a href="/barang-dipinjam" class="hover:underline" class:font-bold={currentPath.startsWith('/barang-dipinjam')}>Dipinjam</a>
+      <a href="/tambah-barang" class="hover:underline" class:font-bold={currentPath.startsWith('/tambah-barang')}>Tambah Barang</a>
+      <a href="/riwayat" class="hover:underline" class:font-bold={currentPath.startsWith('/riwayat')}>Riwayat</a>
+      <button
+        on:click={handleLogout}
+        class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm"
+      >
         Logout
       </button>
     </div>
@@ -41,11 +53,11 @@
   <!-- Mobile Menu -->
   {#if menuOpen}
     <div class="md:hidden px-6 pb-4 space-y-2">
-      <a href="/dashboard" class="block hover:underline" class:font-bold={$page.url.pathname.startsWith('/dashboard')}>Dashboard</a>
-      <a href="/peminjaman" class="block hover:underline" class:font-bold={$page.url.pathname.startsWith('/peminjaman')}>Peminjaman</a>
-      <a href="/barang-dipinjam" class="block hover:underline" class:font-bold={$page.url.pathname.startsWith('/barang-dipinjam')}>Dipinjam</a>
-      <a href="/tambah-barang" class="block hover:underline" class:font-bold={$page.url.pathname.startsWith('/tambah-barang')}>Tambah Barang</a>
-      <a href="/riwayat" class="block hover:underline" class:font-bold={$page.url.pathname.startsWith('/riwayat')}>Riwayat</a>
+      <a href="/dashboard" class="block hover:underline" class:font-bold={currentPath.startsWith('/dashboard')}>Dashboard</a>
+      <a href="/peminjaman" class="block hover:underline" class:font-bold={currentPath.startsWith('/peminjaman')}>Peminjaman</a>
+      <a href="/barang-dipinjam" class="block hover:underline" class:font-bold={currentPath.startsWith('/barang-dipinjam')}>Dipinjam</a>
+      <a href="/tambah-barang" class="block hover:underline" class:font-bold={currentPath.startsWith('/tambah-barang')}>Tambah Barang</a>
+      <a href="/riwayat" class="block hover:underline" class:font-bold={currentPath.startsWith('/riwayat')}>Riwayat</a>
       <button
         on:click={handleLogout}
         class="w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-sm text-center"

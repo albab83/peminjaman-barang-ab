@@ -227,19 +227,24 @@
 
 
   const kembalikanBarang = async (id) => {
-  loadingId = id;
-  try {
-    await axios.put(`https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    await fetchItems();
-    await fetchPeminjam();
-  } catch (err) {
-    console.error('Gagal mengembalikan barang:', err);
-  } finally {
+    loadingId = id;
+    try {
+      const res = await axios.put(
+        `https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      successMessage = res.data.message;
+      errorMessage = '';
+      await fetchData();
+      autoClearMessage()
+    } catch (err) {
+      successMessage = '';
+      errorMessage = err.response?.data?.message || 'Gagal mengembalikan barang';
+      autoClearMessage()
+    }
     loadingId = null;
-  }
-};
+  };
 
 </script>
 
@@ -287,6 +292,18 @@
     <p class="mt-4 text-red-600 text-center">{errorMessage}</p>
   {/if}
 </div>
+
+<!-- Display Success/Error Messages -->
+{#if successMessage}
+<div in:fly={{ y: -10, duration: 300 }} class="bg-green-100 text-green-800 mt-4 px-4 py-4 rounded">
+  {successMessage}
+</div>
+{/if}
+{#if errorMessage}
+<div in:fly={{ y: -10, duration: 300 }} class="bg-red-100 text-red-800 mt-4 px-4 py-2 rounded">
+  {errorMessage}
+</div>
+{/if}
 
 <!-- Table Peminjam -->
 <div class="mt-8 m-10 max-w-4xl mx-auto">

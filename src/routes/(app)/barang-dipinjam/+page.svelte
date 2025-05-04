@@ -90,7 +90,7 @@
   {/if}
 
   <!-- Loading Spinner -->
-  {#if loading}
+  <!-- {#if loading}
     <div class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
       <svg class="animate-spin h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
         viewBox="0 0 24 24">
@@ -99,7 +99,7 @@
           d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
       </svg>
     </div>
-  {/if}
+  {/if} -->
 
   <!-- Data Table -->
   {#if !loading}

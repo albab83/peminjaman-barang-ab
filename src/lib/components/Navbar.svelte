@@ -1,10 +1,22 @@
 <script>
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
+  import { derived } from 'svelte/store';
+
+  // Subscribe secara langsung pada store page
+  let currentPath = '';
+  const unsubscribe = page.subscribe(($page) => {
+    currentPath = $page.url.pathname;
+  });
+
+  // Pastikan untuk menghentikan subscription ketika komponen dihapus
+  import { onDestroy } from 'svelte';
+  onDestroy(() => {
+    unsubscribe();
+  });
 
   const isActive = (path) => {
-    const current = get(page).url.pathname;
-    return current.includes(path) ? 'font-bold text-yellow-300 underline' : '';
+    return currentPath.includes(path) ? 'font-bold text-yellow-300 underline' : '';
   };
 
   let menuOpen = false;
@@ -62,5 +74,4 @@
     </button>
   </div>
   {/if}
-
 </nav>

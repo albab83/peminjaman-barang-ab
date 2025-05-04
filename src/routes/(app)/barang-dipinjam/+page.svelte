@@ -89,20 +89,7 @@
     </div>
   {/if}
 
-  <!-- Loading Spinner -->
-  <!-- {#if loading}
-    <div class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
-      <svg class="animate-spin h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-        viewBox="0 0 24 24">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-        <path class="opacity-75" fill="currentColor"
-          d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-      </svg>
-    </div>
-  {/if} -->
-
   <!-- Data Table -->
-  {#if !loading}
   <div class="mt-8 m-10 max-w-4xl mx-auto">
     <h2 class="text-xl font-semibold mb-4 pl-5">Barang yang Sedang Dipinjam</h2>
     <div class="overflow-x-auto">
@@ -117,46 +104,66 @@
           </tr>
         </thead>
         <tbody>
-          {#each barangDipinjam as item}
-            <tr class="border-t">
-              <td class="px-4 py-2 text-sm text-gray-800">{item.peminjam}</td>
-              <td class="px-4 py-2 text-sm text-gray-800">{item.nama_barang}</td>
-              <td class="px-4 py-2 text-sm text-gray-800">{item.kategori}</td>
-              <td class="px-4 py-2 text-sm text-gray-800">
-                {new Date(item.tanggal_pinjam).toLocaleString('id-ID', {
-                  timeZone: 'Asia/Jakarta',
-                  dateStyle: 'medium',
-                  timeStyle: 'medium'
-                })}
-              </td>
-              <td class="px-4 py-2 text-sm">
-                <button
-                on:click={() => kembalikanBarang(item.id)}
-                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition flex items-center justify-center disabled:opacity-70"
-                disabled={loadingId === item.id}
-              >
-                {#if loadingId === item.id}
-                  <svg class="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                  </svg>
-                  Loading...
-                {:else}
-                  Kembalikan
-                {/if}
-                </button>
-              
-              </td>
-            </tr>
-          {:else}
+          {#if isLoading}
+            {#each Array(5) as _}
+              <tr class="border-t animate-pulse">
+                <td class="px-4 py-2">
+                  <div class="h-4 bg-gray-200 rounded w-24"></div>
+                </td>
+                <td class="px-4 py-2">
+                  <div class="h-4 bg-gray-200 rounded w-32"></div>
+                </td>
+                <td class="px-4 py-2">
+                  <div class="h-4 bg-gray-200 rounded w-20"></div>
+                </td>
+                <td class="px-4 py-2">
+                  <div class="h-4 bg-gray-200 rounded w-36"></div>
+                </td>
+                <td class="px-4 py-2">
+                  <div class="h-8 bg-gray-300 rounded w-24"></div>
+                </td>
+              </tr>
+            {/each}
+          {:else if barangDipinjam.length === 0}
             <tr>
               <td colspan="5" class="text-center px-4 py-2 text-sm text-gray-500">Tidak ada data</td>
             </tr>
-          {/each}
+          {:else}
+            {#each barangDipinjam as item}
+              <tr class="border-t">
+                <td class="px-4 py-2 text-sm text-gray-800">{item.peminjam}</td>
+                <td class="px-4 py-2 text-sm text-gray-800">{item.nama_barang}</td>
+                <td class="px-4 py-2 text-sm text-gray-800">{item.kategori}</td>
+                <td class="px-4 py-2 text-sm text-gray-800">
+                  {new Date(item.tanggal_pinjam).toLocaleString('id-ID', {
+                    timeZone: 'Asia/Jakarta',
+                    dateStyle: 'medium',
+                    timeStyle: 'medium'
+                  })}
+                </td>
+                <td class="px-4 py-2 text-sm">
+                  <button
+                    on:click={() => kembalikanBarang(item.id)}
+                    class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg transition flex items-center justify-center disabled:opacity-70"
+                    disabled={loadingId === item.id}
+                  >
+                    {#if loadingId === item.id}
+                      <svg class="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                      </svg>
+                      Loading...
+                    {:else}
+                      Kembalikan
+                    {/if}
+                  </button>
+                </td>
+              </tr>
+            {/each}
+          {/if}
         </tbody>
+        
       </table>
     </div>
   </div>
-  
-  {/if}
 </main>

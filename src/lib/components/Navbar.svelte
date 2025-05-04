@@ -2,6 +2,11 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
 
+  const isActive = (path) => {
+    const current = get(page).url.pathname;
+    return current.includes(path) ? 'font-bold text-yellow-300 underline' : '';
+  };
+
   let menuOpen = false;
 
   const toggleMenu = () => {
@@ -27,11 +32,11 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-4">
-      <a href="/dashboard" class:hover:underline class:font-bold={$page.url.pathname === '/dashboard'}>Dashboard</a>
-      <a href="/peminjaman" class:hover:underline class:font-bold={$page.url.pathname === '/peminjaman'}>Peminjaman</a>
-      <a href="/barang-dipinjam" class:hover:underline class:font-bold={$page.url.pathname === '/barang-dipinjam'}>Dipinjam</a>
-      <a href="/tambah-barang" class:hover:underline class:font-bold={$page.url.pathname === '/tambah-barang'}>Tambah Barang</a>
-      <a href="/riwayat" class:hover:underline class:font-bold={$page.url.pathname === '/riwayat'}>Riwayat</a>
+      <a href="/dashboard" class={`hover:underline transition ${isActive('/dashboard')}`}>Dashboard</a>
+      <a href="/peminjaman" class={`hover:underline transition ${isActive('/peminjaman')}`}>Peminjaman</a>
+      <a href="/barang-dipinjam" class={`hover:underline transition ${isActive('/barang-dipinjam')}`}>Dipinjam</a>
+      <a href="/tambah-barang" class={`hover:underline transition ${isActive('/tambah-barang')}`}>Tambah Barang</a>
+      <a href="/riwayat" class={`hover:underline transition ${isActive('/riwayat')}`}>Riwayat</a>      
       <button
         on:click={handleLogout}
         class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm"
@@ -43,18 +48,19 @@
 
   <!-- Mobile Menu -->
   {#if menuOpen}
-    <div class="md:hidden px-6 pb-4 space-y-2">
-      <a href="/dashboard" class="block hover:underline" class:font-bold={$page.url.pathname === '/dashboard'}>Dashboard</a>
-      <a href="/peminjaman" class="block hover:underline" class:font-bold={$page.url.pathname === '/peminjaman'}>Peminjaman</a>
-      <a href="/barang-dipinjam" class="block hover:underline" class:font-bold={$page.url.pathname === '/barang-dipinjam'}>Dipinjam</a>
-      <a href="/tambah-barang" class="block hover:underline" class:font-bold={$page.url.pathname === '/tambah-barang'}>Tambah Barang</a>
-      <a href="/riwayat" class="block hover:underline" class:font-bold={$page.url.pathname === '/riwayat'}>Riwayat</a>
-      <button
-        on:click={handleLogout}
-        class="w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-sm text-center"
-      >
-        Logout
-      </button>
-    </div>
+  <div class="md:hidden px-6 pb-4 space-y-2">
+    <a href="/dashboard" class={`block hover:underline ${isActive('/dashboard')}`}>Dashboard</a>
+    <a href="/peminjaman" class={`block hover:underline ${isActive('/peminjaman')}`}>Peminjaman</a>
+    <a href="/barang-dipinjam" class={`block hover:underline ${isActive('/barang-dipinjam')}`}>Dipinjam</a>
+    <a href="/tambah-barang" class={`block hover:underline ${isActive('/tambah-barang')}`}>Tambah Barang</a>
+    <a href="/riwayat" class={`block hover:underline ${isActive('/riwayat')}`}>Riwayat</a>
+    <button
+      on:click={handleLogout}
+      class="w-full bg-red-500 hover:bg-red-600 px-3 py-2 rounded text-sm text-center"
+    >
+      Logout
+    </button>
+  </div>
   {/if}
+
 </nav>

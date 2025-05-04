@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
   import { onMount } from 'svelte';
   import axios from 'axios';
 
@@ -79,7 +79,7 @@
 
 </script>
 
-<div class="max-w-md mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
+<div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
   <h2 class="text-xl font-semibold mb-4 text-center">Form Peminjaman Barang</h2>
 
   <form on:submit|preventDefault={pinjamBarang} class="space-y-4">
@@ -122,10 +122,10 @@
   {#if errorMessage}
     <p class="mt-4 text-red-600 text-center">{errorMessage}</p>
   {/if}
-</div> -->
+</div>
 
 
-<script>
+<!-- <script>
   import { onMount } from 'svelte';
   import axios from 'axios';
 
@@ -293,9 +293,8 @@
   {/if}
 </div>
 
-
-<!-- Table Peminjam -->
-<div class="mt-8 m-10 max-w-4xl mx-auto">
+<!--  Table Peminjam -->
+<!-- <div class="mt-8 m-10 max-w-4xl mx-auto">
   <h2 class="text-xl font-semibold mb-4 pl-5">Barang yang Sedang Dipinjam</h2>
   <div class="overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
@@ -364,6 +363,6 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> --> -->
 
 

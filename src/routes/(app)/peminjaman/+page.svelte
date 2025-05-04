@@ -168,6 +168,7 @@
   };
 
   const fetchPeminjam = async () => {
+    listLoading = true;
     try {
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/barang-dipinjam', {
         headers: { Authorization: `Bearer ${token}` }

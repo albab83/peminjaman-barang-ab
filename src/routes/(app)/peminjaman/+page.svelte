@@ -293,20 +293,20 @@
   {/if}
 </div>
 
-<!-- Display Success/Error Messages -->
-{#if successMessage}
-<div in:fly={{ y: -10, duration: 300 }} class="bg-green-100 text-green-800 mt-4 px-4 py-4 rounded">
-  {successMessage}
-</div>
-{/if}
-{#if errorMessage}
-<div in:fly={{ y: -10, duration: 300 }} class="bg-red-100 text-red-800 mt-4 px-4 py-2 rounded">
-  {errorMessage}
-</div>
-{/if}
 
 <!-- Table Peminjam -->
 <div class="mt-8 m-10 max-w-4xl mx-auto">
+  <!-- Display Success/Error Messages -->
+  {#if successMessage}
+  <div in:fly={{ y: -10, duration: 300 }} class="bg-green-100 text-green-800 mt-4 px-4 py-4 rounded">
+    {successMessage}
+  </div>
+  {/if}
+  {#if errorMessage}
+  <div in:fly={{ y: -10, duration: 300 }} class="bg-red-100 text-red-800 mt-4 px-4 py-2 rounded">
+    {errorMessage}
+  </div>
+  {/if}
   <h2 class="text-xl font-semibold mb-4 pl-5">Barang yang Sedang Dipinjam</h2>
   <div class="overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">

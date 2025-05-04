@@ -104,26 +104,7 @@
         </tbody>
       </table>
 
-      <!-- Pagination Controls -->
-      <div class="flex justify-between items-center mt-6">
-        <button
-          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-          on:click={() => goToPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          &larr; Sebelumnya
-        </button>
-
-        <p class="text-gray-700">Halaman {currentPage} dari {totalPages}</p>
-
-        <button
-          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-          on:click={() => goToPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Selanjutnya &rarr;
-        </button>
-      </div>
+     
     </div>
   </main>
 {/if}
@@ -209,6 +190,26 @@
           {/each}
         </tbody>
       </table>
+       <!-- Pagination Controls -->
+       <div class="flex justify-between items-center mt-6">
+        <button
+          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          on:click={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &larr; Sebelumnya
+        </button>
+
+        <p class="text-gray-700">Halaman {currentPage} dari {totalPages}</p>
+
+        <button
+          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          on:click={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Selanjutnya &rarr;
+        </button>
+      </div>
     </div>
   </main>
 {/if}

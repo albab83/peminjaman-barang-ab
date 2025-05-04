@@ -12,6 +12,13 @@
   let loadingId = null;
   let loading = true; // state untuk menandakan data sedang dimuat
 
+  function autoClearMessage() {
+    setTimeout(() => {
+      successMessage = '';
+      errorMessage = '';
+    }, 3000); // 3 detik
+  }
+
   onMount(() => {
     token = localStorage.getItem('token');
     if (!token) {
@@ -47,6 +54,7 @@
       );
       successMessage = res.data.message;
       errorMessage = '';
+      autoClearMessage
       await fetchData();
     } catch (err) {
       successMessage = '';

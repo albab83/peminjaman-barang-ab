@@ -80,7 +80,7 @@
 </script>
 
 <div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
-  <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Form Peminjaman Barang</h1>
+  <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center sm:text-xs">Form Peminjaman Barang</h1>
 
   <form on:submit|preventDefault={pinjamBarang} class="space-y-4">
     <div>

@@ -52,14 +52,50 @@
 </script>
 
 {#if loading}
-  <div class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
-    <svg class="animate-spin h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-      viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-      <path class="opacity-75" fill="currentColor"
-        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-    </svg>
+{#if loading}
+<div class="px-4 sm:px-6 flex justify-center">
+  <div class="max-w-4xl w-full">
+    <!-- Skeleton Cards -->
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 mb-6">
+      {#each Array(2) as _}
+        <div class="p-4 bg-gray-100 rounded-xl shadow animate-pulse">
+          <div class="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
+          <div class="h-6 bg-gray-400 rounded w-1/3"></div>
+        </div>
+      {/each}
+    </div>
+
+    <!-- Skeleton Table -->
+    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <div class="bg-gray-100 px-4 py-2">
+        <div class="h-4 bg-gray-300 rounded w-1/4 animate-pulse"></div>
+      </div>
+      <table class="min-w-full animate-pulse">
+        <thead>
+          <tr>
+            {#each Array(5) as _}
+              <th class="px-4 py-2">
+                <div class="h-4 bg-gray-200 rounded w-24"></div>
+              </th>
+            {/each}
+          </tr>
+        </thead>
+        <tbody>
+          {#each Array(5) as _}
+            <tr>
+              {#each Array(5) as _}
+                <td class="px-4 py-2">
+                  <div class="h-4 bg-gray-200 rounded w-full"></div>
+                </td>
+              {/each}
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
+
 {:else}
 <div class="flex items-center justify-center px-4 sm:px-6">
   <div class="max-w-4xl w-full bg-white rounded-2xl shadow-lg p-6 sm:p-8">

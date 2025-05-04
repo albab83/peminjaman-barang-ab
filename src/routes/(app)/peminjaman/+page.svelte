@@ -169,7 +169,7 @@
 
   const fetchPeminjam = async () => {
     try {
-      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/sedang-dipinjam', {
+      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/barang-dipinjam', {
         headers: { Authorization: `Bearer ${token}` }
       });
       peminjamList = res.data?.data ?? [];

@@ -100,7 +100,6 @@
 
   <!-- Data Table -->
   <div class="mt-8 m-10 max-w-4xl mx-auto">
-    <h2 class="text-xl font-semibold mb-4 pl-5">Barang yang Sedang Dipinjam</h2>
     <div class="overflow-x-auto">
       <table class="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden">
         <thead class="bg-gray-100">

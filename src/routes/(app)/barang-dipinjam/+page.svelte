@@ -54,11 +54,12 @@
       );
       successMessage = res.data.message;
       errorMessage = '';
-      autoClearMessage
       await fetchData();
+      autoClearMessage()
     } catch (err) {
       successMessage = '';
       errorMessage = err.response?.data?.message || 'Gagal mengembalikan barang';
+      autoClearMessage()
     }
     loadingId = null;
   };

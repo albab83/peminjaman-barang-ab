@@ -104,7 +104,7 @@
           </tr>
         </thead>
         <tbody>
-          {#if isLoading}
+          {#if loading}
             {#each Array(5) as _}
               <tr class="border-t animate-pulse">
                 <td class="px-4 py-2">
@@ -162,7 +162,6 @@
             {/each}
           {/if}
         </tbody>
-        
       </table>
     </div>
   </div>

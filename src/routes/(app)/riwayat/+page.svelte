@@ -54,15 +54,44 @@
 
 
 {#if loading}
-  <div class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
-    <svg class="animate-spin h-12 w-12 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
-      viewBox="0 0 24 24">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-      <path class="opacity-75" fill="currentColor"
-        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-    </svg>
-  </div>
+  <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow space-y-6 animate-pulse">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Riwayat Peminjaman</h1>
+
+    <!-- Skeleton Filter -->
+    <div class="flex items-center gap-4 mb-4">
+      <div class="w-full h-10 bg-gray-200 rounded-lg"></div>
+      <div class="w-1/4 h-10 bg-gray-200 rounded-lg hidden md:block"></div>
+      <div class="w-24 h-10 bg-gray-300 rounded-lg"></div>
+    </div>
+
+    <!-- Skeleton Table -->
+    <div class="overflow-x-auto">
+      <table class="w-full table-auto border-collapse">
+        <thead>
+          <tr class="bg-gray-100 text-left">
+            <th class="px-4 py-2">Nama Barang</th>
+            <th class="px-4 py-2">Peminjam</th>
+            <th class="px-4 py-2">Tanggal Pinjam</th>
+            <th class="px-4 py-2">Tanggal Kembali</th>
+            <th class="px-4 py-2">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each Array(5) as _}
+            <tr class="border-t">
+              <td class="px-4 py-2"><div class="h-4 bg-gray-200 rounded w-32"></div></td>
+              <td class="px-4 py-2"><div class="h-4 bg-gray-200 rounded w-24"></div></td>
+              <td class="px-4 py-2"><div class="h-4 bg-gray-200 rounded w-40"></div></td>
+              <td class="px-4 py-2"><div class="h-4 bg-gray-200 rounded w-40"></div></td>
+              <td class="px-4 py-2"><div class="h-4 bg-gray-200 rounded w-20"></div></td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  </main>
 {/if}
+
 
 {#if !loading}
   <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow space-y-6">

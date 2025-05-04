@@ -16,7 +16,7 @@
     setTimeout(() => {
       successMessage = '';
       errorMessage = '';
-    }, 3000); // 3 detik
+    }, 2000); // 3 detik
   }
 
   onMount(() => {

@@ -52,7 +52,6 @@
 </script>
 
 {#if loading}
-{#if loading}
 <div class="px-4 sm:px-6 flex justify-center">
   <div class="max-w-4xl w-full">
     <!-- Skeleton Cards -->

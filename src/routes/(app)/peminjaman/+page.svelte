@@ -131,19 +131,22 @@
 
   let token;
   let items = [];
+  let peminjamList = [];
   let id_barang = '';
   let peminjam = '';
   let successMessage = '';
   let errorMessage = '';
   let loading = false;
   let listLoading = true;
-  let peminjamList = [];
-  let kembalikanLoadingId = null;
 
   onMount(async () => {
-    token = localStorage.getItem('token');
-    await fetchItems();
-    await fetchPeminjam();
+    try {
+      token = localStorage.getItem('token');
+      await fetchItems();
+      await fetchPeminjam();
+    } catch (err) {
+      console.error('Kesalahan onMount:', err);
+    }
   });
 
   function autoClearMessage() {
@@ -160,17 +163,16 @@
       });
       items = res.data.data.filter(item => !item.is_deleted);
     } catch (err) {
-      console.error('Gagal mengambil data:', err);
+      console.error('Gagal mengambil data barang:', err);
     }
   };
 
   const fetchPeminjam = async () => {
-    listLoading = true;
     try {
-      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/barang-dipinjam', {
+      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/sedang-dipinjam', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      peminjamList = res.data.data;
+      peminjamList = res.data?.data ?? [];
     } catch (err) {
       console.error('Gagal mengambil daftar peminjam:', err);
     } finally {
@@ -212,7 +214,7 @@
       await fetchItems();
       await fetchPeminjam();
     } catch (err) {
-      successMessage = "";
+      successMessage = '';
       errorMessage = err.response?.data?.message || 'Terjadi kesalahan';
     } finally {
       autoClearMessage();
@@ -221,21 +223,14 @@
   };
 
   const kembalikanBarang = async (id) => {
-    kembalikanLoadingId = id;
     try {
-      const res = await axios.put(`https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`, {}, {
+      await axios.put(`https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/kembalikan/${id}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      successMessage = res.data.message;
-      errorMessage = '';
       await fetchItems();
       await fetchPeminjam();
     } catch (err) {
-      successMessage = "";
-      errorMessage = err.response?.data?.message || 'Gagal mengembalikan';
-    } finally {
-      autoClearMessage();
-      kembalikanLoadingId = null;
+      console.error('Gagal mengembalikan barang:', err);
     }
   };
 </script>
@@ -245,7 +240,7 @@
 
   <form on:submit|preventDefault={pinjamBarang} class="space-y-4">
     <div>
-      <label for ="id_barang" class="block text-sm font-medium text-gray-700 mb-1">Pilih Barang</label>
+      <label for="id_barang" class="block text-sm font-medium text-gray-700 mb-1">Pilih Barang</label>
       <select bind:value={id_barang} class="w-full border rounded px-3 py-2">
         <option value="">-- Pilih Barang --</option>
         {#each items as item}
@@ -256,7 +251,12 @@
 
     <div>
       <label for="peminjam" class="block text-sm font-medium text-gray-700 mb-1">Nama Peminjam</label>
-      <input type="text" bind:value={peminjam} placeholder="Masukkan nama" class="w-full border rounded px-3 py-2" />
+      <input
+        type="text"
+        bind:value={peminjam}
+        placeholder="Masukkan nama"
+        class="w-full border rounded px-3 py-2"
+      />
     </div>
 
     <button
@@ -280,62 +280,45 @@
   {/if}
 </div>
 
-<!-- Daftar peminjam -->
-<div class="max-w-4xl mx-auto mt-8 bg-white p-6 rounded-xl shadow-lg">
-  <h2 class="text-xl font-semibold mb-4 text-center">Barang yang Sedang Dipinjam</h2>
-
+<!-- Table Peminjam -->
+<div class="max-w-4xl mx-auto mt-8">
+  <h3 class="text-lg font-semibold mb-4 text-center">Barang Sedang Dipinjam</h3>
   {#if listLoading}
-    <!-- Skeleton loading -->
-    <div class="space-y-3">
+    <div class="space-y-2">
       {#each Array(3) as _}
-        <div class="animate-pulse flex space-x-4">
-          <div class="rounded bg-gray-300 h-6 w-1/4"></div>
-          <div class="rounded bg-gray-300 h-6 w-1/4"></div>
-          <div class="rounded bg-gray-300 h-6 w-1/4"></div>
-          <div class="rounded bg-gray-300 h-6 w-1/6"></div>
-        </div>
+        <div class="animate-pulse bg-gray-200 h-10 rounded"></div>
       {/each}
     </div>
   {:else if peminjamList.length === 0}
-    <p class="text-center text-gray-500">Tidak ada barang yang sedang dipinjam.</p>
+    <p class="text-center text-gray-500">Tidak ada barang yang sedang dipinjam</p>
   {:else}
-    <div class="overflow-x-auto">
-      <table class="min-w-full text-sm border mt-4">
-        <thead class="bg-gray-100 text-left">
+    <table class="w-full border border-gray-300 text-sm">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border p-2">No</th>
+          <th class="border p-2">Nama Barang</th>
+          <th class="border p-2">Peminjam</th>
+          <th class="border p-2">Tanggal Pinjam</th>
+          <th class="border p-2">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each peminjamList as data, i}
           <tr>
-            <th class="py-2 px-4 border-b">Nama Peminjam</th>
-            <th class="py-2 px-4 border-b">Barang</th>
-            <th class="py-2 px-4 border-b">Tanggal Pinjam</th>
-            <th class="py-2 px-4 border-b">Aksi</th>
+            <td class="border p-2 text-center">{i + 1}</td>
+            <td class="border p-2">{data.nama_barang}</td>
+            <td class="border p-2">{data.peminjam}</td>
+            <td class="border p-2">{new Date(data.tanggal_pinjam).toLocaleDateString()}</td>
+            <td class="border p-2 text-center">
+              <button
+                class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                on:click={() => kembalikanBarang(data.id)}
+              >Kembalikan</button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {#each peminjamList as p}
-            <tr class="hover:bg-gray-50">
-              <td class="py-2 px-4 border-b">{p.peminjam}</td>
-              <td class="py-2 px-4 border-b">{p.item.nama_barang}</td>
-              <td class="py-2 px-4 border-b">{new Date(p.tanggal_pinjam).toLocaleDateString()}</td>
-              <td class="py-2 px-4 border-b">
-                <button
-                  on:click={() => kembalikanBarang(p.id)}
-                  class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 disabled:opacity-50"
-                  disabled={kembalikanLoadingId === p.id}
-                >
-                  {#if kembalikanLoadingId === p.id}
-                    <svg class="animate-spin h-4 w-4 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-                    </svg>
-                    Mengembalikan...
-                  {:else}
-                    Kembalikan
-                  {/if}
-                </button>
-              </td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
+        {/each}
+      </tbody>
+    </table>
   {/if}
 </div>
+

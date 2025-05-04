@@ -10,36 +10,51 @@
   let loading = true;
   let successMessage = '';
   let errorMessage = '';
+  let currentPage = 1;
+  let totalPages = 1;
+  let itemsPerPage = 10;
 
   const fetchRiwayat = async () => {
-    loading = true;
-    successMessage = '';
-    errorMessage = '';
-    
-    try {
-      const params = {};
-      if (filterNama) params.nama = filterNama;
-      if (filterStatus) params.status = filterStatus;
+  loading = true;
+  successMessage = '';
+  errorMessage = '';
+  
+  try {
+    const params = {
+      page: currentPage,
+      limit: itemsPerPage
+    };
+    if (filterNama) params.nama = filterNama;
+    if (filterStatus) params.status = filterStatus;
 
-      const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/riwayat', {
-        headers: { Authorization: `Bearer ${token}` },
-        params
-      });
+    const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/riwayat', {
+      headers: { Authorization: `Bearer ${token}` },
+      params
+    });
 
-      riwayat = res.data.data;
-      successMessage = 'Data berhasil dimuat!';
-      setTimeout(() => successMessage = '', 3000);
-    } catch (err) {
-      console.error('Gagal mengambil riwayat:', err);
-      errorMessage = 'Gagal memuat riwayat, coba lagi nanti.';
-      setTimeout(() => errorMessage = '', 2000);
-    } finally {
-      loading = false;
-    }
+    riwayat = res.data.data;
+    totalPages = Math.ceil(res.data.total / itemsPerPage); // backend harus mengembalikan total
+    successMessage = 'Data berhasil dimuat!';
+    setTimeout(() => successMessage = '', 3000);
+  } catch (err) {
+    console.error('Gagal mengambil riwayat:', err);
+    errorMessage = 'Gagal memuat riwayat, coba lagi nanti.';
+    setTimeout(() => errorMessage = '', 2000);
+  } finally {
+    loading = false;
+  }
   };
 
   const handleFilter = () => {
+    currentPage = 1;
     fetchRiwayat();
+  };
+
+  const goToPage = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      currentPage = page;
+      fetchRiwayat();
+    }
   };
 
   onMount(() => {
@@ -88,6 +103,27 @@
           {/each}
         </tbody>
       </table>
+
+      <!-- Pagination Controls -->
+      <div class="flex justify-between items-center mt-6">
+        <button
+          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          on:click={() => goToPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          &larr; Sebelumnya
+        </button>
+
+        <p class="text-gray-700">Halaman {currentPage} dari {totalPages}</p>
+
+        <button
+          class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+          on:click={() => goToPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Selanjutnya &rarr;
+        </button>
+      </div>
     </div>
   </main>
 {/if}

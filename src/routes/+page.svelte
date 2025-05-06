@@ -26,7 +26,7 @@
       successMessage = 'Login berhasil! Mengarahkan ke dashboard...';
 
       setTimeout(() => {
-        goto('/peminjaman');
+        goto('/dashboard');
       }, 1500);
     } catch (err) {
       errorMessage = err.response?.data?.error || 'Login gagal. Silakan coba lagi.';

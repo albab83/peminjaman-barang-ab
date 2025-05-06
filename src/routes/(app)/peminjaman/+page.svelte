@@ -1,10 +1,12 @@
 <script>
   import { onMount } from 'svelte';
+  import Select from 'svelte-select';
   import axios from 'axios';
 
   let token;
   let items = [];
   let id_barang = '';
+  let selectedItem = null;
   let peminjam = '';
   let successMessage = '';
   let errorMessage = '';
@@ -16,32 +18,32 @@
   });
 
   function autoClearMessage() {
-  setTimeout(() => {
-    successMessage = '';
-    errorMessage = '';
-  }, 3000); // 3 detik
-}
+    setTimeout(() => {
+      successMessage = '';
+      errorMessage = '';
+    }, 3000);
+  }
 
   const fetchItems = async () => {
     try {
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/barang', {
         headers: { Authorization: `Bearer ${token}` }
       });
-
-    const activeItems = res.data.data.filter(item => !item.is_deleted);
-    items = activeItems;
+      const activeItems = res.data.data.filter(item => !item.is_deleted);
+      items = activeItems;
     } catch (err) {
       console.error('Gagal mengambil data:', err);
     }
   };
 
   const pinjamBarang = async () => {
-    if (!id_barang) {
+    if (!selectedItem) {
       errorMessage = 'Pilih barang yang ingin dipinjam';
       successMessage = '';
       autoClearMessage();
       return;
     }
+
     if (!peminjam.trim()) {
       errorMessage = 'Nama peminjam harus diisi';
       successMessage = '';
@@ -51,6 +53,8 @@
 
     loading = true;
     try {
+      id_barang = selectedItem.value;
+
       const res = await axios.post(
         'https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/tambah',
         { id_barang, peminjam },
@@ -64,20 +68,25 @@
 
       successMessage = res.data.message;
       errorMessage = '';
-      id_barang = '';
+      selectedItem = null;
       peminjam = '';
       await fetchItems();
     } catch (err) {
-      successMessage = "";
-      errorMessage = err.response.data.message;
+      successMessage = '';
+      errorMessage = err.response?.data?.message || 'Terjadi kesalahan';
     } finally {
       autoClearMessage();
       loading = false;
     }
-
   };
 
+  // Ubah data ke format yang dibutuhkan oleh svelte-select
+  $: options = items.map(item => ({
+    label: `${item.nama_barang} (${item.stok})`,
+    value: item.id
+  }));
 </script>
+
 
 <div class="max-w-2xl mx-auto mt-10 bg-white p-6 rounded-xl shadow-lg">
   <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center sm:text-xs">Form Peminjaman Barang</h1>
@@ -85,12 +94,17 @@
   <form on:submit|preventDefault={pinjamBarang} class="space-y-4">
     <div>
       <label for="id_barang" class="block text-sm font-medium text-gray-700 mb-1">Pilih Barang</label>
-      <select bind:value={id_barang} class="w-full border rounded px-3 py-2">
-        <option value="">-- Pilih Barang --</option>
-        {#each items as item}
-          <option value={item.id}>{item.nama_barang} ({item.stok})</option>
-        {/each}
-      </select>
+      <Select
+        items={options}
+        bind:value={selectedItem}
+        placeholder="Cari dan pilih barang..."
+        clearable={true}
+        class="w-full"
+        inputClass="border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+        menuClass="bg-white border border-gray-200 mt-1 rounded shadow-lg z-10"
+        optionClass="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+        groupClass="text-sm text-gray-600"
+      />
     </div>    
 
     <div>

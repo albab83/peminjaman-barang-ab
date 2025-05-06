@@ -11,6 +11,7 @@
   let successMessage = '';
   let errorMessage = '';
   let loading = false;
+  let loadingOptions = true;
 
   onMount(async () => {
     token = localStorage.getItem('token');
@@ -29,10 +30,16 @@
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/items/barang', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      const activeItems = res.data.data.filter(item => !item.is_deleted);
-      items = activeItems;
+
+      const data = res.data.data.filter(item => !item.is_deleted);
+      options = data.map(item => ({
+        label: `${item.nama_barang} (${item.stok})`,
+        value: item.id
+      }));
     } catch (err) {
-      console.error('Gagal mengambil data:', err);
+      console.error('Gagal memuat data barang:', err);
+    } finally {
+      loadingOptions = false;
     }
   };
 
@@ -94,17 +101,22 @@
   <form on:submit|preventDefault={pinjamBarang} class="space-y-4">
     <div>
       <label for="id_barang" class="block text-sm font-medium text-gray-700 mb-1">Pilih Barang</label>
-      <Select
-        items={options}
-        bind:value={selectedItem}
-        placeholder="Cari dan pilih barang..."
-        clearable={true}
-        class="w-full"
-        inputClass="border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-        menuClass="bg-white border border-gray-200 mt-1 rounded shadow-lg z-10"
-        optionClass="px-4 py-2 hover:bg-blue-100 cursor-pointer"
-        groupClass="text-sm text-gray-600"
-      />
+      {#if loadingOptions}
+        <div class="w-full border border-gray-300 rounded px-3 py-2 bg-gray-50 text-gray-500 text-sm">
+          Memuat daftar barang...
+        </div>
+        {:else}
+        <Select
+          items={options}
+          bind:value={selectedItem}
+          placeholder="Cari dan pilih barang..."
+          clearable={true}
+          class="w-full"
+          inputClass="border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          menuClass="bg-white border border-gray-200 mt-1 rounded shadow-lg z-10"
+          optionClass="px-4 py-2 hover:bg-blue-100 cursor-pointer"
+        />
+      {/if}
     </div>    
 
     <div>

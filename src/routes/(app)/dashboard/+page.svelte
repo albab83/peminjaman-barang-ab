@@ -386,6 +386,7 @@
           <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
         </div>
       </div>
+    </div>
   </div>
   
 

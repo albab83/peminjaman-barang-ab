@@ -273,28 +273,13 @@
             </div>
           </div>
         </div>
-        
-        <div class="bg-white overflow-hidden shadow-md rounded-xl">
-          <div class="p-5">
-            <h3 class="text-lg font-medium text-gray-900">Laporan</h3>
-            <p class="mt-1 text-sm text-gray-500">Lihat statistik peminjaman barang</p>
-            <div class="mt-4">
-              <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                Lihat Laporan
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-white overflow-hidden shadow-md rounded-xl">
+
+        <div class="bg-white overflow-hidden shadow-md rounded-xl"></div>
           <div class="p-5">
             <h3 class="text-lg font-medium text-gray-900">Barang Sedang Dipinjam</h3>
             <p class="mt-1 text-sm text-gray-500">Lihat peminjaman barang</p>
             <div class="mt-4">
-              <a href="/barang-dipinjam" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+              <a href="/barang-dipinjam" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
                 <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="-ml-1 mr-2 h-5 w-5 size-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>                
@@ -303,6 +288,23 @@
             </div>
           </div>
         </div>
+        
+        <div class="bg-white overflow-hidden shadow-md rounded-xl">
+          <div class="p-5">
+            <h3 class="text-lg font-medium text-gray-900">Riwayat Peminjaman</h3>
+            <p class="mt-1 text-sm text-gray-500">Lihat riwayat peminjaman barang</p>
+            <div class="mt-4">
+              <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Lihat Riwayat
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        
       </div>
 
       <!-- Pinjaman Terbaru Table -->

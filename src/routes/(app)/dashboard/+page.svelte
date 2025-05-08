@@ -20,7 +20,7 @@
     
     try {
       const userRes = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/user/profile', {
-        headers: { Authorization: Bearer ${token} }
+        headers: { Authorization: `Bearer ${token}` }
       });
       username = userRes.data.nama || 'Admin';
     } catch (err) {
@@ -35,7 +35,7 @@
   const fetchRingkasan = async () => {
     try {
       const res = await fetch('https://backend-peminjaman-barang-production.up.railway.app/api/dashboard/ringkasan', {
-        headers: { Authorization: Bearer ${token} }
+        headers: { Authorization: `Bearer ${token}` }
       });
 
       if (res.ok) {
@@ -53,7 +53,7 @@
   const fetchPinjamanTerbaru = async () => {
     try {
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/barang-dipinjam?limit=10', {
-        headers: { Authorization: Bearer ${token} }
+        headers: { Authorization: `Bearer ${token}` }
       });
       pinjamanTerbaru = res.data.data;
     } catch (err) {
@@ -360,7 +360,7 @@
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(item.tanggal_pinjam)}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`} ${getStatusColor(item)}}>
+                    <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`}>
                       <svg class="mr-1.5 h-2 w-2" fill="currentColor" viewBox="0 0 8 8">
                         <circle cx="4" cy="4" r="3" />
                       </svg>

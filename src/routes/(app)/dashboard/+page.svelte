@@ -243,7 +243,7 @@
       </div>
 
       <!-- Quick Actions -->
-      <div class="grid gap-6 grid-cols-1 md:grid-cols-3">
+      <div class="grid justify-center gap-6 grid-cols-1 md:grid-cols-3">
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">
             <h3 class="text-lg font-medium text-gray-900">Tambah Barang Baru</h3>
@@ -291,14 +291,14 @@
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">
-            <h3 class="text-lg font-medium text-gray-900">Kembalikan Barang</h3>
+            <h3 class="text-lg font-medium text-gray-900">Barang Sedang Dipinjam</h3>
             <p class="mt-1 text-sm text-gray-500">Lihat peminjaman barang</p>
             <div class="mt-4">
-              <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+              <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>                
-                Kembalikan Barang Yang Sedang Dipinjam
+                Kembalikan Barang
               </a>
             </div>
           </div>

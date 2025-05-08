@@ -287,7 +287,7 @@
               </a>
             </div>
           </div>
-        </div>
+      
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">
@@ -302,9 +302,7 @@
               </a>
             </div>
           </div>
-        </div>
-        
-        
+        </div>  
       </div>
 
       <!-- Pinjaman Terbaru Table -->
@@ -388,10 +386,8 @@
           <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
         </div>
       </div>
-
-      
-    </div>
   </div>
+  
 
   <!-- Footer -->
   <footer class="bg-white mt-12 py-6 border-t">

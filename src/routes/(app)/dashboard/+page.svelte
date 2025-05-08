@@ -241,6 +241,7 @@
           </div>
         </div>
       </div>
+    
 
       <!-- Quick Actions -->
       <div class="grid justify-center gap-6 grid-cols-1 md:grid-cols-3">
@@ -305,85 +306,86 @@
       </div>  
       </div>
 
-    <!-- Pinjaman Terbaru Table -->
-    <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-      <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-          <h2 class="text-lg font-semibold text-gray-800">Barang yang Sedang Dipinjam</h2>
-          <div class="mt-3 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-            <input 
-              type="text" 
-              bind:value={searchQuery}
-              placeholder="Cari peminjam atau barang..." 
-              class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input 
-              type="date" 
-              bind:value={filterDate}
-              class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+      <!-- Pinjaman Terbaru Table -->
+      <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <h2 class="text-lg font-semibold text-gray-800">Barang yang Sedang Dipinjam</h2>
+            <div class="mt-3 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+              <input 
+                type="text" 
+                bind:value={searchQuery}
+                placeholder="Cari peminjam atau barang..." 
+                class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input 
+                type="date" 
+                bind:value={filterDate}
+                class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peminjam</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Pinjam</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            {#each filteredPinjaman() as item, index}
-              <tr class="hover:bg-gray-50 transition-colors duration-150">
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span class="text-blue-700 font-medium">{item.peminjam.charAt(0).toUpperCase()}</span>
-                    </div>
-                    <div class="ml-3">
-                      <div class="text-sm font-medium text-gray-900">{item.peminjam}</div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.nama_barang}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                    {item.kategori}
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(item.tanggal_pinjam)}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                  <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`} ${getStatusColor(item)}}>
-                    <svg class="mr-1.5 h-2 w-2" fill="currentColor" viewBox="0 0 8 8">
-                      <circle cx="4" cy="4" r="3" />
-                    </svg>
-                    Dipinjam
-                  </span>
-                </td>
-              </tr>
-            {:else}
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
               <tr>
-                <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">
-                  <div class="flex flex-col items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <p>Tidak ada data yang ditemukan</p>
-                  </div>
-                </td>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peminjam</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Pinjam</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
               </tr>
-            {/each}
-          </tbody>
-        </table>
-      </div>
-      <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-right text-sm">
-        <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              {#each filteredPinjaman() as item, index}
+                <tr class="hover:bg-gray-50 transition-colors duration-150">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <div class="flex-shrink-0 h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span class="text-blue-700 font-medium">{item.peminjam.charAt(0).toUpperCase()}</span>
+                      </div>
+                      <div class="ml-3">
+                        <div class="text-sm font-medium text-gray-900">{item.peminjam}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.nama_barang}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                      {item.kategori}
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(item.tanggal_pinjam)}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`} ${getStatusColor(item)}}>
+                      <svg class="mr-1.5 h-2 w-2" fill="currentColor" viewBox="0 0 8 8">
+                        <circle cx="4" cy="4" r="3" />
+                      </svg>
+                      Dipinjam
+                    </span>
+                  </td>
+                </tr>
+              {:else}
+                <tr>
+                  <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">
+                    <div class="flex flex-col items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      <p>Tidak ada data yang ditemukan</p>
+                    </div>
+                  </td>
+                </tr>
+              {/each}
+            </tbody>
+          </table>
+        </div>
+        <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-right text-sm">
+          <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
+        </div>
       </div>
     </div>
   </div>

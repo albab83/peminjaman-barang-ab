@@ -335,7 +335,7 @@
             bind:value={filterNama}
             on:keydown={handleKeyDown}
             placeholder="Masukkan nama..."
-            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
           />
         </div>
         
@@ -344,7 +344,7 @@
           <select
             id="filterStatus"
             bind:value={filterStatus}
-            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm bg-white"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm bg-white"
           >
             <option value="">Semua Status</option>
             <option value="dipinjam">Dipinjam</option>
@@ -358,7 +358,7 @@
             id="filterStartDate"
             type="date"
             bind:value={filterStartDate}
-            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
           />
         </div>
         
@@ -368,7 +368,7 @@
             id="filterEndDate"
             type="date"
             bind:value={filterEndDate}
-            class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
+            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300 text-sm"
           />
         </div>
       </div>
@@ -418,7 +418,7 @@
     {/if}
 
     <!-- Table -->
-    <div class="overflow-x-auto bg-white rounded-lg border">
+    <div class="overflow-x-auto bg-white rounded-lg">
       <table class="w-full table-auto border-collapse">
         <thead>
           <tr class="bg-gray-50 text-left">

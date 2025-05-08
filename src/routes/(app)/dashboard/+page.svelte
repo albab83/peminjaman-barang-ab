@@ -102,27 +102,6 @@
 </script>
 
 <div class="min-h-screen bg-gray-50">
-  <!-- Navbar -->
-  <nav class="bg-blue-700 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
-        <div class="flex items-center">
-          <span class="text-xl font-bold">Sistem Peminjaman Barang</span>
-        </div>
-        <div class="flex items-center space-x-4">
-          {#if !loading}
-            <span class="hidden md:block">Halo, {username}</span>
-            <button 
-              on:click={handleLogout}
-              class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm font-medium transition duration-150 ease-in-out"
-            >
-              Logout
-            </button>
-          {/if}
-        </div>
-      </div>
-    </div>
-  </nav>
 
   {#if loading}
   <div class="px-4 sm:px-6 py-8">

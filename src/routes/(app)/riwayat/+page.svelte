@@ -287,7 +287,7 @@
       </div>
 
       <!-- Skeleton Table -->
-      <div class="overflow-x-auto bg-white rounded-lg border">
+      <div class="overflow-x-auto bg-white rounded-lg">
         <table class="w-full table-auto border-collapse">
           <thead>
             <tr class="bg-gray-50 text-left">

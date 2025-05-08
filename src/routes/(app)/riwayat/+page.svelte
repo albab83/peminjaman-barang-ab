@@ -445,8 +445,11 @@
                 <td class="px-4 py-3 text-sm text-gray-800">{item.peminjam || '-'}</td>
                 <td class="px-4 py-3 text-sm text-gray-600">{formatDate(item.tanggal_pinjam)}</td>
                 <td class="px-4 py-3 text-sm text-gray-600">
-                  {item.tanggal_kembali ? formatDate(item.tanggal_kembali) : 
-                    <span class="text-yellow-600">Belum dikembalikan</span>}
+                  {#if item.tanggal_kembali}
+                    {formatDate(item.tanggal_kembali)}
+                  {:else}
+                    <span class="text-yellow-600">Belum dikembalikan</span>
+                  {/if}
                 </td>
                 <td class="px-4 py-3 text-sm">
                   {#if item.status}

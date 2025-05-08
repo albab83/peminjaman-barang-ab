@@ -25,7 +25,9 @@
 
 <nav class="bg-blue-600 text-white shadow-md">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <div class="text-xl font-bold">Peminjaman Barang</div>
+    <div class="text-xl font-bold">
+      <a href="/dashboard" class="text-white text-xl" >DASHBOARD PINJAMIN</a>
+    </div>
 
     <!-- Mobile Menu Button -->
     <button class="md:hidden focus:outline-none" on:click={toggleMenu} aria-label="Toggle Menu">
@@ -36,11 +38,11 @@
 
     <!-- Desktop Menu -->
     <div class="hidden md:flex space-x-4">
-      <a href="/dashboard" class="hover:underline" class:font-bold={currentPath.startsWith('/dashboard')}>Dashboard</a>
+      <!-- <a href="/dashboard" class="hover:underline" class:font-bold={currentPath.startsWith('/dashboard')}>Dashboard</a>
       <a href="/peminjaman" class="hover:underline" class:font-bold={currentPath.startsWith('/peminjaman')}>Peminjaman</a>
       <a href="/barang-dipinjam" class="hover:underline" class:font-bold={currentPath.startsWith('/barang-dipinjam')}>Dipinjam</a>
       <a href="/tambah-barang" class="hover:underline" class:font-bold={currentPath.startsWith('/tambah-barang')}>Tambah Barang</a>
-      <a href="/riwayat" class="hover:underline" class:font-bold={currentPath.startsWith('/riwayat')}>Riwayat</a>
+      <a href="/riwayat" class="hover:underline" class:font-bold={currentPath.startsWith('/riwayat')}>Riwayat</a> -->
       <button
         on:click={handleLogout}
         class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-sm"

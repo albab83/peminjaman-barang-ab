@@ -20,7 +20,7 @@
     
     try {
       const userRes = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/user/profile', {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: Bearer ${token} }
       });
       username = userRes.data.nama || 'Admin';
     } catch (err) {
@@ -35,7 +35,7 @@
   const fetchRingkasan = async () => {
     try {
       const res = await fetch('https://backend-peminjaman-barang-production.up.railway.app/api/dashboard/ringkasan', {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: Bearer ${token} }
       });
 
       if (res.ok) {
@@ -53,7 +53,7 @@
   const fetchPinjamanTerbaru = async () => {
     try {
       const res = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/peminjaman/barang-dipinjam?limit=10', {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: Bearer ${token} }
       });
       pinjamanTerbaru = res.data.data;
     } catch (err) {
@@ -274,7 +274,7 @@
           </div>
         </div>
 
-        <div class="bg-white overflow-hidden shadow-md rounded-xl"></div>
+        <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">
             <h3 class="text-lg font-medium text-gray-900">Barang Sedang Dipinjam</h3>
             <p class="mt-1 text-sm text-gray-500">Lihat peminjaman barang</p>
@@ -287,107 +287,107 @@
               </a>
             </div>
           </div>
-        </div>
-      
-        
-        <div class="bg-white overflow-hidden shadow-md rounded-xl">
-          <div class="p-5">
-            <h3 class="text-lg font-medium text-gray-900">Riwayat Peminjaman</h3>
-            <p class="mt-1 text-sm text-gray-500">Lihat riwayat peminjaman barang</p>
-            <div class="mt-4">
-              <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
-                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                Lihat Riwayat
-              </a>
-            </div>
-          </div>
         </div>  
+
+      <div class="bg-white overflow-hidden shadow-md rounded-xl">
+        <div class="p-5">
+          <h3 class="text-lg font-medium text-gray-900">Riwayat Peminjaman</h3>
+          <p class="mt-1 text-sm text-gray-500">Lihat riwayat peminjaman barang</p>
+          <div class="mt-4">
+            <a href="/riwayat" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+              <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              Lihat Riwayat
+            </a>
+          </div>
+        </div>
+      </div>  
       </div>
 
-      <!-- Pinjaman Terbaru Table -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
-        <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-            <h2 class="text-lg font-semibold text-gray-800">Barang yang Sedang Dipinjam</h2>
-            <div class="mt-3 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
-              <input 
-                type="text" 
-                bind:value={searchQuery}
-                placeholder="Cari peminjam atau barang..." 
-                class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <input 
-                type="date" 
-                bind:value={filterDate}
-                class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+    <!-- Pinjaman Terbaru Table -->
+    <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+      <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+          <h2 class="text-lg font-semibold text-gray-800">Barang yang Sedang Dipinjam</h2>
+          <div class="mt-3 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+            <input 
+              type="text" 
+              bind:value={searchQuery}
+              placeholder="Cari peminjam atau barang..." 
+              class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input 
+              type="date" 
+              bind:value={filterDate}
+              class="border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
           </div>
         </div>
-        <div class="overflow-x-auto">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
-              <tr>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peminjam</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Pinjam</th>
-                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peminjam</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Barang</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal Pinjam</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            {#each filteredPinjaman() as item, index}
+              <tr class="hover:bg-gray-50 transition-colors duration-150">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0 h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span class="text-blue-700 font-medium">{item.peminjam.charAt(0).toUpperCase()}</span>
+                    </div>
+                    <div class="ml-3">
+                      <div class="text-sm font-medium text-gray-900">{item.peminjam}</div>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.nama_barang}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                    {item.kategori}
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(item.tanggal_pinjam)}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`} ${getStatusColor(item)}}>
+                    <svg class="mr-1.5 h-2 w-2" fill="currentColor" viewBox="0 0 8 8">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                    Dipinjam
+                  </span>
+                </td>
               </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-              {#each filteredPinjaman() as item, index}
-                <tr class="hover:bg-gray-50 transition-colors duration-150">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{index + 1}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
-                        <span class="text-blue-700 font-medium">{item.peminjam.charAt(0).toUpperCase()}</span>
-                      </div>
-                      <div class="ml-3">
-                        <div class="text-sm font-medium text-gray-900">{item.peminjam}</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{item.nama_barang}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                      {item.kategori}
-                    </span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(item.tanggal_pinjam)}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                    <span class={`inline-flex items-center text-sm font-medium ${getStatusColor(item)}`}>
-                      <svg class="mr-1.5 h-2 w-2" fill="currentColor" viewBox="0 0 8 8">
-                        <circle cx="4" cy="4" r="3" />
-                      </svg>
-                      Dipinjam
-                    </span>
-                  </td>
-                </tr>
-              {:else}
-                <tr>
-                  <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">
-                    <div class="flex flex-col items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      <p>Tidak ada data yang ditemukan</p>
-                    </div>
-                  </td>
-                </tr>
-              {/each}
-            </tbody>
-          </table>
-        </div>
-        <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-right text-sm">
-          <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
-        </div>
+            {:else}
+              <tr>
+                <td colspan="6" class="px-6 py-8 text-center text-sm text-gray-500">
+                  <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <p>Tidak ada data yang ditemukan</p>
+                  </div>
+                </td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-right text-sm">
+        <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
       </div>
     </div>
+  </div>
+
   
 
   <!-- Footer -->

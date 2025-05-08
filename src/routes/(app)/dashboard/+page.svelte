@@ -287,6 +287,7 @@
               </a>
             </div>
           </div>
+        </div>
       
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
@@ -387,7 +388,6 @@
         </div>
       </div>
     </div>
-  </div>
   
 
   <!-- Footer -->

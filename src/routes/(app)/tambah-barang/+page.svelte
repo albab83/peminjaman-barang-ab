@@ -269,7 +269,7 @@
           type="text" 
           id="nama_barang"
           placeholder="Masukkan nama barang"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
         />
       </div>
 
@@ -281,7 +281,7 @@
           id="kategori"
           placeholder="Masukkan kategori"
           list="category-options"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
         />
         
         <!-- Datalist untuk sugesti kategori yang sudah ada -->
@@ -300,7 +300,7 @@
           id="stok"
           min="1"
           placeholder="Masukkan jumlah stok"
-          class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
         />
       </div>
 
@@ -346,7 +346,7 @@
           type="text" 
           id="search"
           placeholder="Cari berdasarkan nama..."
-          class="w-full pl-10 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+          class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
         />
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 absolute left-3 top-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -359,7 +359,7 @@
       <select 
         bind:value={filterKategori} 
         id="filter-kategori"
-        class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
+        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300"
       >
         <option value="">Semua Kategori</option>
         {#each categories as category}
@@ -419,7 +419,7 @@
       <p class="text-gray-500 text-sm mt-1">Coba ubah kriteria pencarian Anda.</p>
     </div>
   {:else}
-    <div class="overflow-x-auto rounded-lg border">
+    <div class="overflow-x-auto rounded-lg border border-gray-300">
       <table class="w-full table-auto border-collapse">
         <thead class="bg-gray-100">
           <tr>

@@ -22,7 +22,7 @@
       const userRes = await axios.get('https://backend-peminjaman-barang-production.up.railway.app/api/users/me', {
         headers: { Authorization: `Bearer ${token}` }
       });
-      username = userRes.data.nama || 'Admin';
+      username = userRes.data.name || 'Admin';
     } catch (err) {
       console.error('Gagal mengambil profil:', err.message);
     }

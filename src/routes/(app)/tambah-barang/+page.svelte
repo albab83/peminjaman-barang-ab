@@ -431,7 +431,7 @@
         </thead>
         <tbody>
           {#each filteredItems as item}
-            <tr class="border-t hover:bg-gray-50">
+            <tr class="border-t border-gray-300 hover:bg-gray-50">
               <td class="px-4 py-3">{item.nama_barang}</td>
               <td class="px-4 py-3">{item.kategori}</td>
               <td class="px-4 py-3">{item.stok}</td>

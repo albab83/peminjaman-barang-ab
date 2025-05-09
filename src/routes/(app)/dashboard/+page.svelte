@@ -384,7 +384,7 @@
           </table>
         </div>
         <div class="bg-gray-50 px-6 py-3 border-t border-gray-200 text-right text-sm">
-          <a href="/peminjaman" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
+          <a href="/barang-dipinjam" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua peminjaman →</a>
         </div>
       </div>
     </div>

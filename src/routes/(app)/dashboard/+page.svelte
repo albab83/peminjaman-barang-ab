@@ -155,7 +155,8 @@
   <div class="px-4 sm:px-6 py-8">
     <div class="max-w-7xl mx-auto">
       <div class="mb-8">
-        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Dashboard Admin {username}</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Dashboard Admin</h1>
+        <h2 class="text-gray-600 mt-1">Selamat Datang di Aplikasi Peminjaman Barang {username}</h2>
         <p class="text-gray-600 mt-1">Pantau dan kelola peminjaman barang secara efektif</p>
       </div>
 

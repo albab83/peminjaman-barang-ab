@@ -48,7 +48,7 @@
     fetching = true;
     try {
       const res = await axios.get(
-        `${API_BASE_URL}/barang`,
+        `${API_BASE_URL}/all-barang`,
         {
           headers: { Authorization: `Bearer ${token}` }
         }

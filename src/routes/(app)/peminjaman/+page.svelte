@@ -33,7 +33,7 @@
 
       const data = res.data.data.filter(item => !item.is_deleted);
       options = data.map(item => ({
-        label: `${item.nama_barang} (${item.stok})`,
+        label: `${item.nama_barang}`,
         value: item.id
       }));
     } catch (err) {

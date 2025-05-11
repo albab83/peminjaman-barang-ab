@@ -163,6 +163,11 @@
   </div>
 
   {:else}
+
+  {#if showModal}
+          <Peminjaman onClose={closeModal} />
+  {/if}
+
   <div class="px-4 sm:px-6 py-8">
     <div class="max-w-7xl mx-auto">
       <div class="mb-8">
@@ -289,10 +294,7 @@
           </div>
         </div>
 
-        {#if showModal}
-          <Peminjaman onClose={closeModal} />
-        {/if}
-
+        
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">
             <h3 class="text-lg font-medium text-gray-900">Barang Sedang Dipinjam</h3>

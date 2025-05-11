@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import axios from 'axios';
-  import peminjaman from '$lib/modal/peminjaman.svelte';
+  import Peminjaman from '$lib/modal/peminjaman.svelte';
 
   let token;
   let totalBarang = 0;
@@ -289,7 +289,9 @@
           </div>
         </div>
 
-        <peminjaman visible={showModal} onClose={closeModal} />
+        {#if showModal}
+          <Peminjaman onClose={closeModal} />
+        {/if}
 
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">

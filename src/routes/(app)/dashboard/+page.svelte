@@ -289,7 +289,7 @@
           </div>
         </div>
 
-        <PeminjamanModal visible={showModal} onClose={closeModal} />
+        <peminjaman visible={showModal} onClose={closeModal} />
 
         <div class="bg-white overflow-hidden shadow-md rounded-xl">
           <div class="p-5">

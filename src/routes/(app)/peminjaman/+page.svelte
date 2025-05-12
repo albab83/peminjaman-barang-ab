@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { onMount } from 'svelte';
   import Select from 'svelte-select';
   import axios from 'axios';
@@ -148,7 +148,7 @@
   {#if errorMessage}
     <p class="mt-4 text-red-600 text-center">{errorMessage}</p>
   {/if}
-</div>
+</div> -->
 
 
 <!-- <script>

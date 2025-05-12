@@ -1,4 +1,5 @@
 <script>
+  import {fade} from 'svelte/transition';
   import { createEventDispatcher } from 'svelte';
   export let open = false;
 
@@ -106,7 +107,8 @@
   
   {#if open}
     <div class="fixed inset-0 bg-gray-600/50 flex items-center justify-center z-50">
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full relative">
+      <div class="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full relative" 
+        transition:fade>
         <button
           class="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
           on:click={closeModal}

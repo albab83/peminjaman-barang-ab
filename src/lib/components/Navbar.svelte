@@ -58,7 +58,6 @@
     <div class="md:hidden px-6 pb-4 space-y-2"
       transition:slide>
       <a href="/dashboard" class="block hover:underline" class:font-bold={currentPath.startsWith('/dashboard')}>Dashboard</a>
-      <a href="/peminjaman" class="block hover:underline" class:font-bold={currentPath.startsWith('/peminjaman')}>Peminjaman</a>
       <a href="/barang-dipinjam" class="block hover:underline" class:font-bold={currentPath.startsWith('/barang-dipinjam')}>Dipinjam</a>
       <a href="/tambah-barang" class="block hover:underline" class:font-bold={currentPath.startsWith('/tambah-barang')}>Tambah Barang</a>
       <a href="/riwayat" class="block hover:underline" class:font-bold={currentPath.startsWith('/riwayat')}>Riwayat</a>

@@ -3,8 +3,8 @@
   import { goto } from '$app/navigation';
   import axios from 'axios';
   import Peminjaman from '$lib/modal/PeminjamanModal.svelte';
-  
   let showModal = false;
+  
   let token;
   let totalBarang = 0;
   let totalDipinjam = 0;

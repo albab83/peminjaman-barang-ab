@@ -1,10 +1,11 @@
 <script>
-  import { createEventDispatcher } from 'svelte';     
+  import { createEventDispatcher } from 'svelte';
   export let open = false;
+
   const dispatch = createEventDispatcher();
 
   function closeModal() {
-    dispatch('close');
+    dispatch('close'); // Kirim event ke parent
   }
   
     // ... seluruh isi script kamu tetap di sini

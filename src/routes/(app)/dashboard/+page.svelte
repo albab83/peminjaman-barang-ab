@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import axios from 'axios';
-  import PeminjamanModal from '$lib/modal/PeminjamanModal.svelte';
+  import Peminjaman from '$lib/modal/PeminjamanModal.svelte';
   
   let showModal = false;
   let token;
@@ -281,7 +281,7 @@
           </div>
         </div>
 
-        <PeminjamanModal open={showModal} on:close={() => (showModal = false)} />
+        <Peminjaman open={showModal} on:close={() => (showModal = false)} />
 
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">

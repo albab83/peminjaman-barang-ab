@@ -3,7 +3,7 @@
     export let onClose = () => {};
   
     // ... seluruh isi script kamu tetap di sini
-    import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
   import Select from 'svelte-select';
   import axios from 'axios';
 

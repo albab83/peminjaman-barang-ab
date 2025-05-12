@@ -2,7 +2,9 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import axios from 'axios';
-
+  import PeminjamanModal from '$lib/modal/PeminjamanModal.svelte';
+  
+  let showModal = false;
   let token;
   let totalBarang = 0;
   let totalDipinjam = 0;
@@ -98,16 +100,6 @@
     if (daysPassed > 7) return 'text-red-600';
     if (daysPassed > 3) return 'text-yellow-600';
     return 'text-green-600';
-  }
-
-  let showModal = false;
-
-  function openModal() {
-    showModal = true;
-  }
-
-  function closeModal() {
-    showModal = false;
   }
 </script>
 
@@ -279,15 +271,17 @@
             <h3 class="text-lg font-medium text-gray-900">Catat Peminjaman</h3>
             <p class="mt-1 text-sm text-gray-500">Daftarkan peminjaman barang baru</p>
             <div class="mt-4">
-              <a href="/peminjaman" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+              <button  on:click={() => (showModal = true)} class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
                 <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 Catat Peminjaman
-              </a>
+              </button>
             </div>
           </div>
         </div>
+
+        <PeminjamanModal open={showModal} on:close={() => (showModal = false)} />
 
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">

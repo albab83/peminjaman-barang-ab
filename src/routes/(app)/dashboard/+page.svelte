@@ -281,7 +281,7 @@
           </div>
         </div>
 
-        <Peminjaman open={showModal} on:close={() => (showModal = false)} />
+        <Peminjaman open={showModal} on:click={() => (showModal = false)} />
 
         
         <div class="bg-white overflow-hidden shadow-md rounded-xl">

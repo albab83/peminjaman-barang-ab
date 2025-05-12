@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import axios from 'axios';
-  import Peminjaman from '$lib/modal/peminjaman.svelte';
+  import Peminjaman from '$lib/modal/Peminjaman.svelte';
 
   let token;
   let totalBarang = 0;

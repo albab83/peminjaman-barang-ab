@@ -123,6 +123,7 @@
               </div>
               {:else}
               <Select
+                id="id_barang"
                 items={options}
                 bind:value={selectedItem}
                 placeholder="Cari dan pilih barang"
@@ -138,6 +139,7 @@
           <div>
             <label for="peminjam" class="block text-sm font-medium text-gray-700 mb-1">Nama Peminjam</label>
             <input
+              id="peminjam"
               type="text"
               bind:value={peminjam}
               placeholder="Masukkan nama"

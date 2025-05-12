@@ -1,6 +1,12 @@
 <script>
-    export let open = false;
-    export let onClose = () => {};
+  import { createEventDispatcher } from 'svelte';
+  export let open = false;
+  
+  const dispatch = createEventDispatcher();
+
+  function closeModal() {
+    dispatch('close');
+  }
   
     // ... seluruh isi script kamu tetap di sini
   import { onMount } from 'svelte';

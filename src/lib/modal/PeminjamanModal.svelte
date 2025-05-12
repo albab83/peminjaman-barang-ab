@@ -1,9 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';     
   export let open = false;
-  export let onClose = () => {};
-
-  
   const dispatch = createEventDispatcher();
 
   function closeModal() {

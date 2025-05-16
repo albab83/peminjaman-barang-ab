@@ -287,7 +287,7 @@
         <!-- Datalist untuk sugesti kategori yang sudah ada -->
         <datalist id="category-options">
           {#each categories as category}
-            <option value={category}/>
+            <option value={category}></option>
           {/each}
         </datalist>
       </div>

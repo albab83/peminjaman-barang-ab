@@ -263,98 +263,98 @@
  
 
   <!-- form moadal -->
-   {#if showFormModal}
-  <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-    <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
-      <button
-        class="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
-        on:click={() => {
-          showFormModal = false;
-          resetForm();
-        }}
-      >
-        ✕
-      </button>
+  {#if showFormModal}
+    <div class="fixed inset-0 bg-black bg-opacity/50 flex justify-center items-center z-50">
+      <div class="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+        <button
+          class="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+          on:click={() => {
+            showFormModal = false;
+            resetForm();
+          }}
+        >
+          ✕
+        </button>
 
-      <h2 class="text-xl font-semibold mb-4">{editMode ? 'Edit Barang' : 'Tambah Barang Baru'}</h2>
-      
-      <form on:submit|preventDefault={() => { handleSubmit(); showFormModal = false; }} class="space-y-4">
-        <!-- ...ISI FORM TETAP SAMA seperti sebelumnya... -->
-        <div>
-          <label for="nama_barang" class="block text-sm font-medium text-gray-700 mb-1">Nama Barang</label>
-          <input 
-            bind:value={nama_barang} 
-            type="text" 
-            id="nama_barang"
-            placeholder="Masukkan nama barang"
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
-          />
-        </div>
+        <h2 class="text-xl font-semibold mb-4">{editMode ? 'Edit Barang' : 'Tambah Barang Baru'}</h2>
+        
+        <form on:submit|preventDefault={() => { handleSubmit(); showFormModal = false; }} class="space-y-4">
+          <!-- ...ISI FORM TETAP SAMA seperti sebelumnya... -->
+          <div>
+            <label for="nama_barang" class="block text-sm font-medium text-gray-700 mb-1">Nama Barang</label>
+            <input 
+              bind:value={nama_barang} 
+              type="text" 
+              id="nama_barang"
+              placeholder="Masukkan nama barang"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+            />
+          </div>
 
-        <div>
-          <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-          <input 
-            bind:value={kategori} 
-            type="text" 
-            id="kategori"
-            placeholder="Masukkan kategori"
-            list="category-options"
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
-          />
-          
-          <!-- Datalist untuk sugesti kategori yang sudah ada -->
-          <datalist id="category-options">
-            {#each categories as category}
-              <option value={category}></option>
-            {/each}
-          </datalist>
-        </div>
+          <div>
+            <label for="kategori" class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
+            <input 
+              bind:value={kategori} 
+              type="text" 
+              id="kategori"
+              placeholder="Masukkan kategori"
+              list="category-options"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+            />
+            
+            <!-- Datalist untuk sugesti kategori yang sudah ada -->
+            <datalist id="category-options">
+              {#each categories as category}
+                <option value={category}></option>
+              {/each}
+            </datalist>
+          </div>
 
-        <div>
-          <label for="stok" class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
-          <input 
-            bind:value={stok} 
-            type="number" 
-            id="stok"
-            min="1"
-            placeholder="Masukkan jumlah stok"
-            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
-          />
-        </div>
+          <div>
+            <label for="stok" class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
+            <input 
+              bind:value={stok} 
+              type="number" 
+              id="stok"
+              min="1"
+              placeholder="Masukkan jumlah stok"
+              class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300" 
+            />
+          </div>
 
-        <div class="flex gap-3">
-          <button
-            type="submit"
-            class="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition disabled:opacity-60"
-            disabled={loading}
-          >
-            {#if loading}
-              <svg class="w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-                <path class="opacity-75" fill="currentColor"
-                  d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-              </svg>
-              {editMode ? 'Menyimpan...' : 'Menambahkan...'}
-            {:else}
-              {editMode ? 'Simpan Perubahan' : 'Tambah Barang'}
-            {/if}
-          </button>
-          
-          {#if editMode}
+          <div class="flex gap-3">
             <button
-              type="button"
-              on:click={resetForm}
-              class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+              type="submit"
+              class="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition disabled:opacity-60"
+              disabled={loading}
             >
-              Batal
+              {#if loading}
+                <svg class="w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                </svg>
+                {editMode ? 'Menyimpan...' : 'Menambahkan...'}
+              {:else}
+                {editMode ? 'Simpan Perubahan' : 'Tambah Barang'}
+              {/if}
             </button>
-          {/if}
-        </div>
-      </form>
+            
+            {#if editMode}
+              <button
+                type="button"
+                on:click={resetForm}
+                class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition"
+              >
+                Batal
+              </button>
+            {/if}
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-{/if}
+  {/if}
 
 
   <!-- Search and Filter -->
